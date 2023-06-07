@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Source\\Repos\\PrograWeb23\\Northwind\\Entities\\Entities.csproj": {}
+    "C:\\Users\\User\\source\\repos\\PrograWeb23\\Northwind\\Entities\\Entities.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Source\\Repos\\PrograWeb23\\Northwind\\Entities\\Entities.csproj": {
+    "C:\\Users\\User\\source\\repos\\PrograWeb23\\Northwind\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\PrograWeb23\\Northwind\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\PrograWeb23\\Northwind\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "C:\\Users\\User\\Source\\Repos\\PrograWeb23\\Northwind\\Entities\\Entities.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\PrograWeb23\\Northwind\\Entities\\Entities.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Source\\Repos\\PrograWeb23\\Northwind\\Entities\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\PrograWeb23\\Northwind\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

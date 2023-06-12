@@ -1,4 +1,5 @@
 ﻿using DAL.Interfaces;
+using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -16,17 +17,21 @@ namespace BackEnd.Controllers
 
         public CategoryController()
         {
-            
+            categoryDAL = new CategoryDALImpl();
         }
 
         #endregion
 
 
+        #region Consultas
+
         // GET: api/<CategoryController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public JsonResult Get()
         {
-            return new string[] { "value1", "value2" };
+            IEnumerable<Category> categories = categoryDAL.GetAll();
+
+            return new JsonResult(categories);
         }
 
         // GET api/<CategoryController>/5
@@ -35,6 +40,10 @@ namespace BackEnd.Controllers
         {
             return "value";
         }
+        #endregion
+
+        #region Agregar
+
 
         // POST api/<CategoryController>
         [HttpPost]
@@ -42,16 +51,25 @@ namespace BackEnd.Controllers
         {
         }
 
+        #endregion
+
+        #region Modificar
+
         // PUT api/<CategoryController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
+        #endregion
+
+        #region Eliminar
 
         // DELETE api/<CategoryController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
         }
+
+        #endregion
     }
 }

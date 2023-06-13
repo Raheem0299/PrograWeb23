@@ -15,6 +15,16 @@ namespace BackEnd.Controllers
 
         private ICategoryDAL categoryDAL;
 
+        private CategoryModel Convertir (Category category)
+        {
+            return new CategoryModel
+            {
+                CategoryId = category.CategoryId,
+                CategoryName = category.CategoryName,
+                Description = category.Description,
+            };
+        }
+
         #region Constructores
 
         public CategoryController()
@@ -34,21 +44,12 @@ namespace BackEnd.Controllers
             IEnumerable<Category> categories = categoryDAL.GetAll();
             List<CategoryModel> models = new List<CategoryModel>();
 
-            /*tengo que mappear a mano los atributos de una clase dentro de otra a pesar de que
-            consten de los mismos ya que son de dos clases diferentes, uno de BEnd y otro de 
-            Entities*/
+            /*llamar a los metodos/el metodo creados al inicio de -Convertir- para ahorrar tiempo 
+             y codigo*/
 
             foreach (var category in categories)
             {
-                models.Add(
-                    new CategoryModel
-                    {
-                        CategoryId = category.CategoryId,
-                        CategoryName = category.CategoryName,
-                        Description = category.Description,
-                    }
-
-                  );
+                models.Add(Convertir(category));
             }
 
             return new JsonResult(models);
@@ -60,14 +61,7 @@ namespace BackEnd.Controllers
         {
             Category category = categoryDAL.Get(id);
 
-            return new JsonResult(new CategoryModel
-            {
-                CategoryId = category.CategoryId,
-                CategoryName = category.CategoryName,
-                Description = category.Description,
-            }
-
-                  );
+            return new JsonResult(Convertir(category));
         }
         #endregion
 

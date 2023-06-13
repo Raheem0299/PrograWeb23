@@ -1,4 +1,4 @@
-﻿using DAL.Implementations;
+﻿using DAL.Interfaces;
 using Entities.Entities;
 using System;
 using System.Collections.Generic;
@@ -7,12 +7,13 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Interfaces
+namespace DAL.Implementations
 {
     public class CategoryDALImpl : ICategoryDAL
     {
         private NorthWindContext _northWindContext;
         private UnidadDeTrabajo<Category> unidad;
+
         public bool Add(Category entity)
         {
             throw new NotImplementedException();
@@ -30,12 +31,7 @@ namespace DAL.Interfaces
 
         public Category Get(int id)
         {
-            Category category = null;
-            using (unidad = new UnidadDeTrabajo<Category>(new NorthWindContext()))
-            {
-                category = unidad.genericDAL.Get(id);
-            }
-            return category;
+            throw new NotImplementedException();
         }
 
         public IEnumerable<Category> GetAll()

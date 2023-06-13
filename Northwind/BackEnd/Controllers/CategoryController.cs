@@ -1,4 +1,5 @@
-﻿using DAL.Implementations;
+﻿using BackEnd.Models;
+using DAL.Implementations;
 using DAL.Interfaces;
 using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -31,8 +32,26 @@ namespace BackEnd.Controllers
         public JsonResult Get()
         {
             IEnumerable<Category> categories = categoryDAL.GetAll();
+            List<CategoryModel> models = new List<CategoryModel>();
 
-            return new JsonResult(categories);
+            /*tengo que mappear a mano los atributos de una clase dentro de otra a pesar de que
+            consten de los mismos ya que son de dos clases diferentes, uno de BEnd y otro de 
+            Entities*/
+
+            foreach (var category in categories)
+            {
+                models.Add(
+                    new CategoryModel
+                    {
+                        CategoryId = category.CategoryId,
+                        CategoryName = category.CategoryName,
+                        Description = category.Description,
+                    }
+
+                  );
+            }
+
+            return new JsonResult(models);
         }
 
         // GET api/<CategoryController>/5
@@ -41,7 +60,14 @@ namespace BackEnd.Controllers
         {
             Category category = categoryDAL.Get(id);
 
-            return new JsonResult(category);
+            return new JsonResult(new CategoryModel
+            {
+                CategoryId = category.CategoryId,
+                CategoryName = category.CategoryName,
+                Description = category.Description,
+            }
+
+                  );
         }
         #endregion
 

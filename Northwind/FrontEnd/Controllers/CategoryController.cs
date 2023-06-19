@@ -9,17 +9,17 @@ namespace FrontEnd.Controllers
     {
         CategoryHelper categoryHelper;
 
-
-        // GET: CategoryController1
+        // GET: CategoryController
         public ActionResult Index()
         {
+
             categoryHelper = new CategoryHelper();
             List<CategoryViewModel> list =  categoryHelper.GetAll();
 
             return View(list);
         }
 
-        // GET: CategoryController1/Details/5
+        // GET: CategoryController/Details/5
         public ActionResult Details(int id)
         {
             return View();

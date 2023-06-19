@@ -25,6 +25,16 @@ namespace BackEnd.Controllers
             };
         }
 
+        private Category Convertir(CategoryModel category)
+        {
+            return new Category
+            {
+                CategoryId = category.CategoryId,
+                CategoryName = category.CategoryName,
+                Description = category.Description,
+            };
+        }
+
         #region Constructores
 
         public CategoryController()

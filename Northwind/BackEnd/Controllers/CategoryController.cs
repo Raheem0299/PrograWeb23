@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 ﻿using DAL.Interfaces;
+=======
+﻿using BackEnd.Models;
+using DAL.Implementations;
+using DAL.Interfaces;
+>>>>>>> Semana03
 using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +19,29 @@ namespace BackEnd.Controllers
 
         private ICategoryDAL categoryDAL;
 
+<<<<<<< HEAD
+=======
+        private CategoryModel Convertir (Category category)
+        {
+            return new CategoryModel
+            {
+                CategoryId = category.CategoryId,
+                CategoryName = category.CategoryName,
+                Description = category.Description,
+            };
+        }
+
+        private Category Convertir(CategoryModel category)
+        {
+            return new Category
+            {
+                CategoryId = category.CategoryId,
+                CategoryName = category.CategoryName,
+                Description = category.Description,
+            };
+        }
+
+>>>>>>> Semana03
         #region Constructores
 
         public CategoryController()
@@ -30,8 +59,22 @@ namespace BackEnd.Controllers
         public JsonResult Get()
         {
             IEnumerable<Category> categories = categoryDAL.GetAll();
+<<<<<<< HEAD
 
             return new JsonResult(categories);
+=======
+            List<CategoryModel> models = new List<CategoryModel>();
+
+            /*llamar a los metodos/el metodo creados al inicio de -Convertir- para ahorrar tiempo 
+             y codigo*/
+
+            foreach (var category in categories)
+            {
+                models.Add(Convertir(category));
+            }
+
+            return new JsonResult(models);
+>>>>>>> Semana03
         }
 
         // GET api/<CategoryController>/5
@@ -40,7 +83,11 @@ namespace BackEnd.Controllers
         {
             Category category = categoryDAL.Get(id);
 
+<<<<<<< HEAD
             return new JsonResult(category);
+=======
+            return new JsonResult(Convertir(category));
+>>>>>>> Semana03
         }
         #endregion
 
